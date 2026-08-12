@@ -14,6 +14,8 @@ export const portfolio = {
       "/profile.webp"
     ],
     resumePdf: "/Suhas_N_R_Resume.pdf",
+    resumeUrl: "/Suhas_N_R_Resume.pdf",
+    projectsUrl: "#projects",
     codeTag: "SNR.DEV",
     batch: "CSE • 2027",
     cgpa: "8.13 CGPA",
@@ -22,6 +24,7 @@ export const portfolio = {
     phone: "+91 86600 64479",
     githubUrl: "https://github.com/suhasnr733-design",
     linkedinUrl: "https://linkedin.com/in/suhasnr",
+    description: "CS Engineering student at Canara Engineering College (CGPA 8.13), building AI-powered platforms with Google Gemini, OpenAI Whisper & OCR that deliver 85–98% accuracy in internal testing.",
     tagline: "BUILD • LEARN • CREATE",
     floatingBadges: [
       { text: "CS ENGINEER", position: "top-left" },
@@ -187,5 +190,11 @@ export const portfolio = {
     { step: "04", title: "BUILD", desc: "Develop clean code with Gemini AI, Whisper & full-stack frameworks." },
     { step: "05", title: "TEST", desc: "Validate parsing accuracy, ATS scores & speaker diarization precision." },
     { step: "06", title: "IMPROVE", desc: "Iterate based on performance metrics & document redaction feedback." }
+  ],
+
+  stats: [
+    { value: "8.13 CGPA", label: "Canara Engineering College · B.E. CSE" },
+    { value: "95–98%", label: "Resume Parsing Accuracy (Internal Testing)" },
+    { value: "Top 10", label: "CORE UNLEASHED 36-Hour Innovation Marathon" }
   ]
 };

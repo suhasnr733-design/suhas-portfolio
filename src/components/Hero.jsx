@@ -50,21 +50,21 @@ export const Hero = () => {
 
           {/* Action CTAs */}
           <div className="hero-cta-group">
-            <a href={portfolio.personal.projectsUrl} className="btn btn-primary">
+            <a href="#projects" className="btn btn-primary">
               <span>View Projects</span>
               <ArrowUpRight size={16} className="btn-arrow" />
             </a>
 
-            <a href={portfolio.personal.resumeUrl} className="btn btn-secondary">
+            <a href={portfolio.personal.resumePdf} target="_blank" rel="noreferrer" className="btn btn-secondary">
               <Download size={16} />
-              <span>Download Resume</span>
+              <span>View Resume</span>
             </a>
           </div>
 
           {/* Social Links */}
           <div className="hero-socials">
             <a
-              href="https://github.com"
+              href={portfolio.personal.githubUrl}
               target="_blank"
               rel="noreferrer"
               className="social-link"
@@ -74,7 +74,7 @@ export const Hero = () => {
               <span>GitHub</span>
             </a>
             <a
-              href="https://linkedin.com"
+              href={portfolio.personal.linkedinUrl}
               target="_blank"
               rel="noreferrer"
               className="social-link"
@@ -84,7 +84,7 @@ export const Hero = () => {
               <span>LinkedIn</span>
             </a>
             <a
-              href="mailto:suhas@example.com"
+              href={`mailto:${portfolio.personal.email}`}
               className="social-link"
               aria-label="Email Contact"
             >
