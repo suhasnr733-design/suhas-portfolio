@@ -16,7 +16,7 @@ export const Projects = () => {
             Engineered Systems & <span className="text-gradient">Projects</span>
           </h2>
           <p className="section-subtitle">
-            A selection of intelligent applications, developer tools, and high-performance algorithms built by Suhas N R Acharya.
+            A selection of intelligent applications, developer tools, and high-performance algorithms built by Suhas N R.
           </p>
         </div>
 

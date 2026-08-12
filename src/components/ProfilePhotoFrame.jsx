@@ -87,7 +87,7 @@ export const ProfilePhotoFrame = () => {
         }}
         tabIndex={0}
         role="button"
-        aria-label="View Suhas N R Acharya's Fullscreen Profile Photo"
+        aria-label="View Suhas N R's Fullscreen Profile Photo"
       >
         {/* Animated Particles background settling around frame */}
         <div className="settling-particles-container" aria-hidden="true">

@@ -34,7 +34,7 @@ export const Hero = () => {
           <div className="hero-heading-group">
             <span className="hero-greeting">Hello, I'm</span>
             <h1 className="hero-name">
-              Suhas N R Acharya
+              Suhas N R
               <span className="name-accent-line"></span>
             </h1>
           </div>
