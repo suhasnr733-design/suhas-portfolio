@@ -1,10 +1,23 @@
-import React from 'react';
-import { X, Download, ExternalLink, Briefcase, GraduationCap, Award, CheckCircle2 } from 'lucide-react';
+import React, { useState } from 'react';
+import { X, Download, ExternalLink, Briefcase, GraduationCap, Award, CheckCircle2, Mail, Check } from 'lucide-react';
 import { portfolio } from '../config/portfolio';
 import { GithubIcon, LinkedinIcon } from './Icons';
 
 export const RecruiterModeModal = ({ isOpen, onClose }) => {
+  const [copied, setCopied] = useState(false);
+
   if (!isOpen) return null;
+
+  const handleEmailClick = (e) => {
+    e.preventDefault();
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(portfolio.personal.email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 3500);
+    }
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(portfolio.personal.email)}&su=${encodeURIComponent('Interview / Opportunity Inquiry - Suhas N R')}`;
+    window.open(gmailUrl, '_blank', 'noopener,noreferrer');
+  };
 
   return (
     <div className="recruiter-modal-backdrop" onClick={onClose} role="dialog" aria-modal="true">
@@ -88,9 +101,15 @@ export const RecruiterModeModal = ({ isOpen, onClose }) => {
             <Download size={16} />
             <span>Download PDF Resume</span>
           </a>
-          <a href={`mailto:${portfolio.personal.email}`} className="btn btn-secondary">
-            <span>Email Direct</span>
-          </a>
+          <button
+            type="button"
+            onClick={handleEmailClick}
+            className="btn btn-secondary"
+            title={`Click to open Gmail composer and copy ${portfolio.personal.email}`}
+          >
+            {copied ? <Check size={16} color="var(--cyan)" /> : <Mail size={16} />}
+            <span>{copied ? 'Email Copied!' : 'Email Direct'}</span>
+          </button>
         </div>
       </div>
     </div>
