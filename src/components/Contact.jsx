@@ -15,13 +15,23 @@ export const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSending(true);
-    // Construct mailto as graceful fallback — no backend/API keys
-    const mailto = `mailto:${portfolio.personal.email}?subject=${encodeURIComponent(form.subject || 'Portfolio Contact')}&body=${encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`)}`;
-    window.location.href = mailto;
+
+    const subjectText = form.subject || 'Portfolio Contact Inquiry';
+    const bodyText = `Hi Suhas,\n\nName: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`;
+
+    // 1. Copy formatted text to clipboard so it's never lost
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(`To: ${portfolio.personal.email}\nSubject: ${subjectText}\n\n${bodyText}`);
+    }
+
+    // 2. Open Gmail compose directly in a new tab
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(portfolio.personal.email)}&su=${encodeURIComponent(subjectText)}&body=${encodeURIComponent(bodyText)}`;
+    window.open(gmailUrl, '_blank', 'noopener,noreferrer');
+
     setTimeout(() => {
       setSending(false);
       setSubmitted(true);
-    }, 800);
+    }, 600);
   };
 
   return (
@@ -118,12 +128,23 @@ export const Contact = () => {
             {submitted ? (
               <div className="contact-success">
                 <div className="success-icon">✓</div>
-                <h3>Opening your email client…</h3>
+                <h3>Gmail Compose Opened!</h3>
                 <p>
-                  Your default email app should open with the message pre-filled.
-                  Alternatively email me directly at{' '}
-                  <a href={`mailto:${portfolio.personal.email}`}>{portfolio.personal.email}</a>.
+                  Your message has been pre-filled in Gmail in a new tab. 
+                  Your text was also copied to your clipboard just in case!
                 </p>
+                <div style={{ marginTop: '1.25rem', display: 'flex', gap: '0.75rem', justifyContent: 'center' }}>
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    onClick={() => {
+                      setSubmitted(false);
+                      setForm({ name: '', email: '', subject: '', message: '' });
+                    }}
+                  >
+                    Send Another Message
+                  </button>
+                </div>
               </div>
             ) : (
               <form className="contact-form" onSubmit={handleSubmit} noValidate>
